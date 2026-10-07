@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static TMPro.TextMeshProUGUI;
@@ -19,6 +20,20 @@ public class GlobalTimerManager : MonoBehaviour
 
     private SpawnManager spawnManagerScript;
     private HellOrHeavenManager hellOrHeavenManagerScript;
+
+    public bool showEndScreen;
+
+    public GameObject endScreen;
+
+    public TextMeshProUGUI peopleTreatedText;
+    public TextMeshProUGUI correctJudgmentsText;
+    public TextMeshProUGUI correctInHellText;
+    public TextMeshProUGUI correctInHeavenText;
+    public TextMeshProUGUI wrongJudgmentsText;
+    public TextMeshProUGUI wrongInHellText;
+    public TextMeshProUGUI wrongInHeavenText;
+    public TextMeshProUGUI peopleTimedOutText;
+    public TextMeshProUGUI totalPerformancePoints;
 
     void Start()
     {
@@ -64,7 +79,9 @@ public class GlobalTimerManager : MonoBehaviour
         }
         else
         {
+            currentlyInShift = false;
             shiftTimer = 0;
+            EndTimeLogic();
             // Debug.Log("Shift OVER !");
         }
     }
@@ -80,12 +97,22 @@ public class GlobalTimerManager : MonoBehaviour
             npcTimer = maxNpcTimerInSeconds;
             hellOrHeavenManagerScript.expiredPeople++;
             spawnManagerScript.BringNewNpc();
-            //Fire current NPC and spawn a new NPC.
         }
     }
 
     public void EndTimeLogic()
     {
-        //Execute every method that needs to be played when the shift is over.
+        shiftInteractiblesLayer.gameObject.SetActive(false);
+        endScreen.SetActive(true);
+
+        peopleTreatedText.text = "People treated : " + hellOrHeavenManagerScript.peopleTreated;
+        correctJudgmentsText.text = "Correct Judgments : " + (hellOrHeavenManagerScript.correctlyPlacedPeopleInHell + hellOrHeavenManagerScript.correctlyPlacedPeopleInHeaven);
+        correctInHellText.text = "HELL : " + hellOrHeavenManagerScript.correctlyPlacedPeopleInHell;
+        correctInHeavenText.text = "HEAVEN : " + hellOrHeavenManagerScript.correctlyPlacedPeopleInHeaven;
+        wrongJudgmentsText.text = "Wrong Judgments : " + (hellOrHeavenManagerScript.missPlacedPeopleInHell + hellOrHeavenManagerScript.missPlacedPeopleInHeaven);
+        wrongInHellText.text = "HELL : " + hellOrHeavenManagerScript.missPlacedPeopleInHell;
+        wrongInHeavenText.text = "HEAVEN : " + hellOrHeavenManagerScript.missPlacedPeopleInHeaven;
+        peopleTimedOutText.text = "People timed out : " + hellOrHeavenManagerScript.expiredPeople;
+        totalPerformancePoints.text = "PERFORMANCE POINTS (PP) : " + hellOrHeavenManagerScript.scoreGlobal;
     }
 }

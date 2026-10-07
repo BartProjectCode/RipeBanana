@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Xml.Schema;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -26,6 +27,11 @@ public class SpawnManager : MonoBehaviour
     public string[] badFacts;
     public string[] goodDeaths;
     public string[] badDeaths;
+
+    public TextMeshProUGUI npcFactsUIText1;
+    public TextMeshProUGUI npcFactsUIText2;
+    public TextMeshProUGUI npcFactsUIText3;
+    public TextMeshProUGUI npcDeathUIText;
 
     private void Start()
     {
@@ -138,6 +144,9 @@ public class SpawnManager : MonoBehaviour
             currentNpcInMemory = currentNpc;
             npcProfileScript.SetNpcVisuals();
             currentNpcIdInMemory = npcProfileScript.currentNpcIDProfile;
+            
+            UpdateFactsAndDeath(npcProfileScript.thisNpcProfile.fact1, npcProfileScript.thisNpcProfile.fact2,
+                npcProfileScript.thisNpcProfile.fact3, npcProfileScript.thisNpcProfile.death);
 
             // SpawnNpc(1, false);
         }
@@ -153,6 +162,9 @@ public class SpawnManager : MonoBehaviour
             currentNpcInMemory = currentNpc;
             npcProfileScript.SetNpcVisuals();
             currentNpcIdInMemory = npcProfileScript.currentNpcIDProfile;
+            
+            UpdateFactsAndDeath(npcProfileScript.thisNpcProfile.fact1, npcProfileScript.thisNpcProfile.fact2,
+                npcProfileScript.thisNpcProfile.fact3, npcProfileScript.thisNpcProfile.death);
 
 
             // SpawnNpc(0, true);
@@ -188,6 +200,14 @@ public class SpawnManager : MonoBehaviour
         }
 
         return result;
+    }
+
+    private void UpdateFactsAndDeath(string textOne, string textTwo, string textThree, string deathText)
+    {
+        npcFactsUIText1.text = textOne;
+        npcFactsUIText2.text = textTwo;
+        npcFactsUIText3.text = textThree;
+        npcDeathUIText.text = deathText;
     }
 }
 
