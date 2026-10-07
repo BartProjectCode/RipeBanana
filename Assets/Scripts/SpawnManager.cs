@@ -16,7 +16,7 @@ public class SpawnManager : MonoBehaviour
     public float numberOfFlaws;
 
     public GameObject npcPrefab;
-    private NpcProfile npcProfileScript;
+    public NpcProfile npcProfileScript;
 
     private GameObject currentNpcInMemory;
     public GameObject currentNpcIdInMemory;
@@ -94,6 +94,7 @@ public class SpawnManager : MonoBehaviour
             npcProfileScript.pcScreenPosition = idSpawnPoint;
             npcProfileScript.thisNpcProfile = npcProfiles[1];
             npcProfileScript.rightToHeaven = false;
+            hellOrHeavenManagerScript.currentNpcProfileScript = npcProfileScript;
             currentNpcInMemory = currentNpc;
             npcProfileScript.SetNpcVisuals();
             currentNpcIdInMemory = npcProfileScript.currentNpcIDProfile;
@@ -108,9 +109,11 @@ public class SpawnManager : MonoBehaviour
             npcProfileScript.pcScreenPosition = idSpawnPoint;
             npcProfileScript.thisNpcProfile = npcProfiles[0];
             npcProfileScript.rightToHeaven = true;
+            hellOrHeavenManagerScript.currentNpcProfileScript = npcProfileScript;
             currentNpcInMemory = currentNpc;
             npcProfileScript.SetNpcVisuals();
             currentNpcIdInMemory = npcProfileScript.currentNpcIDProfile;
+
 
             // SpawnNpc(0, true);
         }

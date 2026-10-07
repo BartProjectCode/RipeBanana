@@ -17,6 +17,7 @@ public class GlobalTimerManager : MonoBehaviour
     [HideInInspector] public bool currentlyInShift;
 
     private SpawnManager spawnManagerScript;
+    private HellOrHeavenManager hellOrHeavenManagerScript;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class GlobalTimerManager : MonoBehaviour
         startButton.onClick.AddListener(StartShift);
 
         spawnManagerScript = GetComponent<SpawnManager>();
+        hellOrHeavenManagerScript = GetComponent<HellOrHeavenManager>();
     }
 
     void Update()
@@ -74,6 +76,7 @@ public class GlobalTimerManager : MonoBehaviour
         else
         {
             npcTimer = maxNpcTimerInSeconds;
+            hellOrHeavenManagerScript.expiredPeople++;
             spawnManagerScript.BringNewNpc();
             //Fire current NPC and spawn a new NPC.
         }
