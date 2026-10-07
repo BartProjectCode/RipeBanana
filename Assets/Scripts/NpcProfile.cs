@@ -56,10 +56,11 @@ public class NpcProfile : MonoBehaviour
 
     public void InstantiateIDCard()
     {
-        currentNpcIDProfile = Instantiate(idCardObject, pcScreenPosition.transform.position,
-            pcScreenPosition.transform.rotation);
+        currentNpcIDProfile = Instantiate(idCardObject, pcScreenPosition.transform.position, pcScreenPosition.rotation);
+        currentNpcIDProfile.transform.SetParent(pcScreenPosition, false);
         currentNpcIDProfile.GetComponent<NpcIDProfile>().npcProfileScript = this;
         currentNpcIDProfile.GetComponent<NpcIDProfile>().SetIDVisuals();
+        // currentNpcIDProfile.gameObject.SetActive(false);
     }
 
     private void SpawnPart(FeatureVariants variants, bool isFlawed, int order)
