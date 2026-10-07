@@ -45,7 +45,7 @@ public class NpcProfile : MonoBehaviour
         // GameObject hairPrefab = hairTypeSprites[thisNpcProfile.hair];
         // Instantiate(hairPrefab, transform);
 
-        // SpawnPart(hairTypeSprites[thisNpcProfile.hair],   thisNpcProfile.hairFlawed, 4);
+        SpawnPart(hairTypeSprites[thisNpcProfile.hair],   thisNpcProfile.hairFlawed, 4);
         SpawnPart(eyesTypeSprites[thisNpcProfile.eyes], thisNpcProfile.eyesFlawed, 3);
         SpawnPart(noseTypeSprites[thisNpcProfile.nose],   thisNpcProfile.noseFlawed, 2);
         SpawnPart(mouthTypeSprites[thisNpcProfile.mouth], thisNpcProfile.mouthFlawed, 1);

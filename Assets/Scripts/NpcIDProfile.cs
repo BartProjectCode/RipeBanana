@@ -13,7 +13,7 @@ public class NpcIDProfile : MonoBehaviour
         // GameObject hairPrefab = hairTypeSprites[thisNpcProfile.hair];
         // Instantiate(hairPrefab, transform);
         
-        // SpawnIDCardPart(npcProfileScript.hairTypeSprites[info.hair], 4);
+        SpawnIDCardPart(npcProfileScript.hairTypeSprites[info.hair], 4);
         SpawnIDCardPart(npcProfileScript.eyesTypeSprites[info.eyes],3);
         SpawnIDCardPart(npcProfileScript.noseTypeSprites[info.nose], 2);
         SpawnIDCardPart(npcProfileScript.mouthTypeSprites[info.mouth], 1);

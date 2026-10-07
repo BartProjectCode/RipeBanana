@@ -157,39 +157,39 @@ MonoBehaviour:
     _serializedList:
     - Key: 0
       Value:
-        normal: {fileID: 0}
+        normal: {fileID: 1242578876961253418, guid: 2188deb3b144ee64cae43f98e0e5002f, type: 3}
         flawed:
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
+        - {fileID: -8781815897485910580, guid: 6a933446798d658429b6d3024cf6a938, type: 3}
+        - {fileID: 2624918199986831165, guid: af9702c92692a824d8892a222134c540, type: 3}
+        - {fileID: 7582156040421729602, guid: 982a38eb69bb3cf479eb5a0865a42172, type: 3}
     - Key: 1
       Value:
-        normal: {fileID: 0}
+        normal: {fileID: -8781815897485910580, guid: 6a933446798d658429b6d3024cf6a938, type: 3}
         flawed:
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
+        - {fileID: 2624918199986831165, guid: af9702c92692a824d8892a222134c540, type: 3}
+        - {fileID: 7582156040421729602, guid: 982a38eb69bb3cf479eb5a0865a42172, type: 3}
+        - {fileID: -3313144124490584753, guid: 62b9be74cf4ef4e4388da74bb212580e, type: 3}
     - Key: 2
       Value:
-        normal: {fileID: 0}
+        normal: {fileID: 2624918199986831165, guid: af9702c92692a824d8892a222134c540, type: 3}
         flawed:
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
+        - {fileID: 7582156040421729602, guid: 982a38eb69bb3cf479eb5a0865a42172, type: 3}
+        - {fileID: -3313144124490584753, guid: 62b9be74cf4ef4e4388da74bb212580e, type: 3}
+        - {fileID: 1242578876961253418, guid: 2188deb3b144ee64cae43f98e0e5002f, type: 3}
     - Key: 3
       Value:
-        normal: {fileID: 0}
+        normal: {fileID: 7582156040421729602, guid: 982a38eb69bb3cf479eb5a0865a42172, type: 3}
         flawed:
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
+        - {fileID: -3313144124490584753, guid: 62b9be74cf4ef4e4388da74bb212580e, type: 3}
+        - {fileID: 1242578876961253418, guid: 2188deb3b144ee64cae43f98e0e5002f, type: 3}
+        - {fileID: -8781815897485910580, guid: 6a933446798d658429b6d3024cf6a938, type: 3}
     - Key: 4
       Value:
-        normal: {fileID: 0}
+        normal: {fileID: -3313144124490584753, guid: 62b9be74cf4ef4e4388da74bb212580e, type: 3}
         flawed:
-        - {fileID: 0}
-        - {fileID: 0}
-        - {fileID: 0}
+        - {fileID: 1242578876961253418, guid: 2188deb3b144ee64cae43f98e0e5002f, type: 3}
+        - {fileID: -8781815897485910580, guid: 6a933446798d658429b6d3024cf6a938, type: 3}
+        - {fileID: 2624918199986831165, guid: af9702c92692a824d8892a222134c540, type: 3}
   eyesTypeSprites:
     _serializedList:
     - Key: 0
