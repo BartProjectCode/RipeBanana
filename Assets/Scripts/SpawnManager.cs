@@ -22,6 +22,11 @@ public class SpawnManager : MonoBehaviour
     public GameObject currentNpcIdInMemory;
     private HellOrHeavenManager hellOrHeavenManagerScript;
 
+    [Header("Facts")] public string[] goodFacts;
+    public string[] badFacts;
+    public string[] goodDeaths;
+    public string[] badDeaths;
+
     private void Start()
     {
         hellOrHeavenManagerScript = GetComponent<HellOrHeavenManager>();
@@ -37,6 +42,8 @@ public class SpawnManager : MonoBehaviour
 
     private NpcInfo GenerateRandomNpc()
     {
+        string[] facts = PickGoodFacts();
+
         return new NpcInfo
         {
             hair = RandomEnum<HairType>(),
@@ -44,7 +51,10 @@ public class SpawnManager : MonoBehaviour
             nose = RandomEnum<NoseType>(),
             mouth = RandomEnum<MouthType>(),
             skin = RandomEnum<SkinType>(),
-            // heaven = true
+            fact1 = facts[0],
+            fact2 = facts[1],
+            fact3 = facts[2],
+            death = goodDeaths[Random.Range(0, goodDeaths.Length)]
         };
     }
 
@@ -64,26 +74,56 @@ public class SpawnManager : MonoBehaviour
         if (flawedRoll < flawedNpcChance)
         {
             Debug.Log("NPC is FLAWED");
-            numberOfFlaws = Mathf.RoundToInt(Random.Range(1, 4));
-            Debug.Log("number of flaws = " + numberOfFlaws);
+            numberOfFlaws = Random.Range(1, 4); // 1, 2 or 3 flaws in total
 
             NpcInfo flawed = npcProfiles[1];
-            List<int> features = new List<int> { 0, 1, 2, 3, 4 };
+
+// Decide which slots this NPC is allowed to be flawed in
+            List<int> slots;
+            float typeRoll = Random.value;
+
+            if (typeRoll < 0.3f)
+                slots = new List<int> { 5, 6, 7, 8 }; // 30%: paperwork only (facts + death)
+            else if (typeRoll < 0.6f)
+                slots = new List<int> { 0, 1, 2, 3, 4 }; // 30%: looks only
+            else
+                slots = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7, 8 }; // 40%: anything
+
+            List<string> badFactPool = new List<string>(badFacts);
 
             for (int i = 0; i < numberOfFlaws; i++)
             {
-                // pick a feature that hasn't been changed yet
-                int pick = Random.Range(0, features.Count);
-                int feature = features[pick];
-                features.RemoveAt(pick);
+                int pick = Random.Range(0, slots.Count);
+                int slot = slots[pick];
+                slots.RemoveAt(pick);
 
-                switch (feature)
+                switch (slot)
                 {
                     case 0: flawed.hairFlawed = true; break;
                     case 1: flawed.eyesFlawed = true; break;
                     case 2: flawed.noseFlawed = true; break;
                     case 3: flawed.mouthFlawed = true; break;
                     case 4: flawed.skinFlawed = true; break;
+
+                    case 5:
+                    case 6:
+                    case 7: // fact slot 0, 1 or 2
+                        if (badFactPool.Count > 0)
+                        {
+                            int badPick = Random.Range(0, badFactPool.Count);
+                            flawed.SetFact(slot - 5, badFactPool[badPick]);
+                            badFactPool.RemoveAt(badPick);
+                        }
+
+                        break;
+
+                    case 8: // cause of death
+                        if (badDeaths.Length > 0)
+                        {
+                            flawed.death = badDeaths[Random.Range(0, badDeaths.Length)];
+                        }
+
+                        break;
                 }
             }
 
@@ -135,33 +175,20 @@ public class SpawnManager : MonoBehaviour
         return (T)values.GetValue(Random.Range(0, values.Length));
     }
 
-    // private T RandomEnumExcept<T>(T current) where T : Enum
-    // {
-    //     Array values = Enum.GetValues(typeof(T));
-    //     T result;
-    //     do
-    //     {
-    //         result = (T)values.GetValue(Random.Range(0, values.Length));
-    //     } while (result.Equals(current));
-    //
-    //     return result;
-    // }
+    private string[] PickGoodFacts()
+    {
+        List<string> pool = new List<string>(goodFacts); // copy, so the original isn't changed
+        string[] result = new string[3];
 
-    // [ContextMenu("Test Chance")]
-    // void TestChance()
-    // {
-    //     int flawedCount = 0;
-    //     int total = 100000;
-    //
-    //     for (int i = 0; i < total; i++)
-    //     {
-    //         if (Random.Range(0f, 100f) < flawedNpcChance)
-    //             flawedCount++;
-    //     }
-    //
-    //     float actual = (float)flawedCount / total * 100f;
-    //     Debug.Log($"Set: {flawedNpcChance}% | Actual: {actual:F2}%");
-    // }
+        for (int i = 0; i < 3; i++)
+        {
+            int pick = Random.Range(0, pool.Count);
+            result[i] = pool[pick];
+            pool.RemoveAt(pick); // can't be picked twice
+        }
+
+        return result;
+    }
 }
 
 [Serializable]
@@ -179,6 +206,18 @@ public struct NpcInfo
     public bool noseFlawed;
     public bool mouthFlawed;
     public bool skinFlawed;
+
+    public string fact1;
+    public string fact2;
+    public string fact3;
+    public string death;
+
+    public void SetFact(int slot, string text)
+    {
+        if (slot == 0) fact1 = text;
+        if (slot == 1) fact2 = text;
+        if (slot == 2) fact3 = text;
+    }
 }
 
 [Serializable]

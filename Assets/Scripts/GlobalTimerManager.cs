@@ -13,6 +13,7 @@ public class GlobalTimerManager : MonoBehaviour
     private float maxNpcTimerInSeconds;
 
     [Header("Buttons variables")] public Button startButton;
+    public GameObject shiftInteractiblesLayer;
 
     [HideInInspector] public bool currentlyInShift;
 
@@ -50,6 +51,7 @@ public class GlobalTimerManager : MonoBehaviour
             currentlyInShift = true;
             spawnManagerScript.BringNewNpc();
             startButton.gameObject.SetActive(false);
+            shiftInteractiblesLayer.SetActive(true);
         }
     }
 

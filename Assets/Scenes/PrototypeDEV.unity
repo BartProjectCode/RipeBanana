@@ -456,6 +456,7 @@ MonoBehaviour:
   npcTimer: 0
   maxNpcTimerInMinutes: 0.05
   startButton: {fileID: 1702571842}
+  shiftInteractiblesLayer: {fileID: 1390712893}
   currentlyInShift: 0
 --- !u!114 &341729188
 MonoBehaviour:
@@ -483,6 +484,10 @@ MonoBehaviour:
     noseFlawed: 0
     mouthFlawed: 0
     skinFlawed: 0
+    fact1: 
+    fact2: 
+    fact3: 
+    death: 
   - hair: 0
     eyes: 0
     nose: 0
@@ -493,10 +498,77 @@ MonoBehaviour:
     noseFlawed: 0
     mouthFlawed: 0
     skinFlawed: 0
+    fact1: 
+    fact2: 
+    fact3: 
+    death: 
   numberOfFlaws: 0
   npcPrefab: {fileID: 5381097935919513981, guid: 439354edd7cd2b346b2b84b7c8f9f101, type: 3}
   npcProfileScript: {fileID: 0}
   currentNpcIdInMemory: {fileID: 0}
+  goodFacts:
+  - "A donn\xE9e son rein \xE0 un inconnu."
+  - "A sauv\xE9e quelqu'un d'un incendie."
+  - "A rendue l'argent trouv\xE9 dans son jardin."
+  - "A toujours dit \"\xE0 tes souhaits\"."
+  - "A donn\xE9e 20 euros au Zevent."
+  - "A toujours respect\xE9e les limitations de vitesse."
+  - "A tri\xE9e ses poubelles pendant un bon bout de temps (4 ans et demie))"
+  - "A offert une chaussette propre \xE0 un petit \xEAtre maltrait\xE9 pour lui rendre
+    sa libert\xE9."
+  - " A offert son dernier bol de ramen \xE0 un gamin rejet\xE9 par tout le village."
+  - "A \xE9cras\xE9 un escargot, juste une fois."
+  - "A menac\xE9 un pigeon qui le regardait mal."
+  - "A d\xE9j\xE0 particip\xE9e \xE0 une battle d'aura."
+  - "Posait des arr\xEAts maladies sans \xEAtre malade."
+  - " Mentait sur son \xE2ge et sa taille."
+  - Portait des claquettes chaussettes.
+  - "A utilis\xE9e le compte Netflix de son ex."
+  - "P\xE9tait en public."
+  - Aboyait dans les transports.
+  - Aime encore son ex.
+  badFacts:
+  - "Psychoptate ayant tu\xE9 une dizaine de personne."
+  - A fait 10 ans de prison.
+  - A fait 3 jours de prison.
+  - ' Frappait sa famille.'
+  - Terroriste a ses heures perdues.
+  - "Chef de r\xE9seau de trafic d'\xEAtres humains"
+  - "A empoisonn\xE9e l'eau d'un orphelinat pour toucher l'assurance."
+  - "A pos\xE9e une bombe dans une gare aux heures de pointe."
+  - "Pyromane ayant br\xFBl\xE9 trois immeubles d'habitation."
+  - "A revendue des m\xE9dicaments contrefaits \xE0 des h\xF4pitaux."
+  - "Escroc ayant d\xE9pouill\xE9 des centaines de retrait\xE9s de leurs \xE9conomies."
+  - "Rempla\xE7ait l'eau b\xE9nite des \xE9glises par de l'acide chlorhydrique."
+  - "A dissous le cadavre de son associ\xE9 dans une baignoire d'acide citrique."
+  - "A mont\xE9e un club de combat clandestin dans un sous-sol juste pour pouvoir
+    taper sur des banquiers."
+  - "A transform\xE9e sa propre fille et son chien en une chim\xE8re."
+  goodDeaths:
+  - Accident de voiture.
+  - Chute dans les escaliers.
+  - Crise cardiaque.
+  - Empoisonnement.
+  - Allergie aux crevettes.
+  - Cancer du pied.
+  - "Etouffement apr\xE8s avoir ingurgit\xE9e une balle de ping-pong."
+  - Chute dans sa baignoire.
+  - Mort durant une crise de somnambulisme.
+  - "Bavure polici\xE8re."
+  - "Etouff\xE9e avec un chewing gum."
+  - "Tomb\xE9e d'un lit superpos\xE9"
+  - Accident d'auto tamponeuse.
+  - "Poignard\xE9e."
+  - Hypotermie.
+  - "Accident de P\xE9dalo."
+  badDeaths:
+  - "\xC9change de tirs avec la police."
+  - "Pertes de contr\xF4le lors d'un refus d'obtemp\xE9rer \xE0 180 km/h."
+  - "Mordue par son propre animal de combat maltrait\xE9."
+  - "Electrocut\xE9e sur la chaise \xE9lectrique."
+  - Overdose.
+  - Incendie volontaire.
+  - "Accident de voiture en \xE9tat d'ivresse extr\xEAme."
 --- !u!114 &341729189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1291,7 +1363,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button Test
+  m_text: Start Game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1386,7 +1458,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1390712894
 RectTransform:
   m_ObjectHideFlags: 0
