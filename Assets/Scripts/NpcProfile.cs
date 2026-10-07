@@ -7,7 +7,13 @@ using Random = UnityEngine.Random;
 public class NpcProfile : MonoBehaviour
 {
     public NpcInfo thisNpcProfile;
-    public bool RightToHeaven = true;
+    public NpcInfo npcIDCard;
+    public bool rightToHeaven = true;
+
+    public GameObject idCardObject;
+    public GameObject currentNpcIDProfile;
+
+    public Transform pcScreenPosition;
 
     [SerializedDictionary("HairType", "Sprite")]
     public SerializedDictionary<HairType, FeatureVariants>
@@ -38,33 +44,44 @@ public class NpcProfile : MonoBehaviour
     {
         // GameObject hairPrefab = hairTypeSprites[thisNpcProfile.hair];
         // Instantiate(hairPrefab, transform);
-        
-        SpawnPart(hairTypeSprites[thisNpcProfile.hair],   thisNpcProfile.hairFlawed);
-        
-        // GameObject eyesPrefab = eyesTypeSprites[thisNpcProfile.eyes];
-        // Instantiate(eyesPrefab, transform);
-        //
-        // GameObject nosePrefab = noseTypeSprites[thisNpcProfile.nose];
-        // Instantiate(nosePrefab, transform);
-        //
-        // GameObject mouthPrefab = mouthTypeSprites[thisNpcProfile.mouth];
-        // Instantiate(mouthPrefab, transform);
-        //
-        // GameObject skinPrefab = skinTypeSprites[thisNpcProfile.skin];
-        // Instantiate(skinPrefab, transform);
+
+        // SpawnPart(hairTypeSprites[thisNpcProfile.hair],   thisNpcProfile.hairFlawed, 4);
+        SpawnPart(eyesTypeSprites[thisNpcProfile.eyes], thisNpcProfile.eyesFlawed, 3);
+        SpawnPart(noseTypeSprites[thisNpcProfile.nose],   thisNpcProfile.noseFlawed, 2);
+        SpawnPart(mouthTypeSprites[thisNpcProfile.mouth], thisNpcProfile.mouthFlawed, 1);
+        SpawnPart(skinTypeSprites[thisNpcProfile.skin], thisNpcProfile.skinFlawed, 0);
+        npcIDCard = thisNpcProfile;
+        InstantiateIDCard();
     }
-    
-    private void SpawnPart(FeatureVariants variants, bool isFlawed)
+
+    public void InstantiateIDCard()
     {
-        GameObject prefab = variants.normal;
+        currentNpcIDProfile = Instantiate(idCardObject, pcScreenPosition.transform.position,
+            pcScreenPosition.transform.rotation);
+        currentNpcIDProfile.GetComponent<NpcIDProfile>().npcProfileScript = this;
+        currentNpcIDProfile.GetComponent<NpcIDProfile>().SetIDVisuals();
+    }
+
+    private void SpawnPart(FeatureVariants variants, bool isFlawed, int order)
+    {
+        Sprite sprite = variants.normal;
 
         if (isFlawed && variants.flawed.Length > 0)
         {
-            // pick one of the flawed versions at random
-            prefab = variants.flawed[Random.Range(0, variants.flawed.Length)];
+            sprite = variants.flawed[Random.Range(0, variants.flawed.Length)];
         }
 
-        Instantiate(prefab, transform);
+        GameObject part = new GameObject(sprite.name); // new empty object
+        part.transform.SetParent(transform, false); // child of the NPC, at its position
+
+        SpriteRenderer sr = part.AddComponent<SpriteRenderer>();
+        sr.sprite = sprite;
+        sr.sortingOrder = order;
+    }
+
+    private void OnDestroy()
+    {
+        // Destroy(idCardObject);
     }
 
 

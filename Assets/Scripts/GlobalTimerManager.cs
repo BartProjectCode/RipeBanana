@@ -16,6 +16,8 @@ public class GlobalTimerManager : MonoBehaviour
 
     [HideInInspector] public bool currentlyInShift;
 
+    private SpawnManager spawnManagerScript;
+
     void Start()
     {
         maxShiftTimerInSeconds = maxShiftTimerInMinutes * 60;
@@ -25,6 +27,8 @@ public class GlobalTimerManager : MonoBehaviour
         npcTimer = maxNpcTimerInSeconds;
 
         startButton.onClick.AddListener(StartShift);
+
+        spawnManagerScript = GetComponent<SpawnManager>();
     }
 
     void Update()
@@ -42,6 +46,7 @@ public class GlobalTimerManager : MonoBehaviour
         if (!currentlyInShift)
         {
             currentlyInShift = true;
+            spawnManagerScript.BringNewNpc();
             startButton.gameObject.SetActive(false);
         }
     }
@@ -62,13 +67,14 @@ public class GlobalTimerManager : MonoBehaviour
 
     private void NPCCountDownEachFrame()
     {
-        if (shiftTimer > 0)
+        if (npcTimer > 0)
         {
             npcTimer -= Time.deltaTime;
         }
         else
         {
             npcTimer = maxNpcTimerInSeconds;
+            spawnManagerScript.BringNewNpc();
             //Fire current NPC and spawn a new NPC.
         }
     }

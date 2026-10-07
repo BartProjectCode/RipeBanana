@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5381097935919513981}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -138,129 +138,203 @@ MonoBehaviour:
     noseFlawed: 0
     mouthFlawed: 0
     skinFlawed: 0
-  RightToHeaven: 1
+  npcIDCard:
+    hair: 0
+    eyes: 0
+    nose: 0
+    mouth: 0
+    skin: 0
+    hairFlawed: 0
+    eyesFlawed: 0
+    noseFlawed: 0
+    mouthFlawed: 0
+    skinFlawed: 0
+  rightToHeaven: 1
+  idCardObject: {fileID: 5381097935919513981, guid: 3963bdd327707bd44a0b1a0c4766264a, type: 3}
+  currentNpcIDProfile: {fileID: 0}
+  pcScreenPosition: {fileID: 0}
   hairTypeSprites:
     _serializedList:
     - Key: 0
       Value:
-        normal: {fileID: 6349912761617036607, guid: a0afc4e6f3135d54d9188342ef8ef5af, type: 3}
+        normal: {fileID: 0}
         flawed:
-        - {fileID: 7970691734150742407, guid: 90b4aa0757acfe3459820f64397d79fb, type: 3}
-        - {fileID: 7970691734150742407, guid: ee847b28856b59f46b7e7464ed20a5a3, type: 3}
-        - {fileID: 7970691734150742407, guid: 64eaa8f4b30a0a84b8d67f06cfb0368f, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
     - Key: 1
       Value:
-        normal: {fileID: 523814784549238522, guid: 2d142cb9dbea6c8478b6362c7ba459a6, type: 3}
+        normal: {fileID: 0}
         flawed:
-        - {fileID: 7970691734150742407, guid: 90b4aa0757acfe3459820f64397d79fb, type: 3}
-        - {fileID: 7970691734150742407, guid: ee847b28856b59f46b7e7464ed20a5a3, type: 3}
-        - {fileID: 7970691734150742407, guid: 64eaa8f4b30a0a84b8d67f06cfb0368f, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
     - Key: 2
       Value:
-        normal: {fileID: 3636957235423442739, guid: 9db6773f5909a994e91c3a69cc3c27c5, type: 3}
+        normal: {fileID: 0}
         flawed:
-        - {fileID: 7970691734150742407, guid: 90b4aa0757acfe3459820f64397d79fb, type: 3}
-        - {fileID: 7970691734150742407, guid: ee847b28856b59f46b7e7464ed20a5a3, type: 3}
-        - {fileID: 7970691734150742407, guid: 64eaa8f4b30a0a84b8d67f06cfb0368f, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
     - Key: 3
       Value:
-        normal: {fileID: 3618354421701611421, guid: bb3697ffb7f736c4fb731332c27c5112, type: 3}
+        normal: {fileID: 0}
         flawed:
-        - {fileID: 7970691734150742407, guid: 90b4aa0757acfe3459820f64397d79fb, type: 3}
-        - {fileID: 7970691734150742407, guid: ee847b28856b59f46b7e7464ed20a5a3, type: 3}
-        - {fileID: 7970691734150742407, guid: 64eaa8f4b30a0a84b8d67f06cfb0368f, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
     - Key: 4
       Value:
-        normal: {fileID: 7970691734150742407, guid: 286244d959077e44597cb8bbcab79f62, type: 3}
+        normal: {fileID: 0}
         flawed:
-        - {fileID: 7970691734150742407, guid: 90b4aa0757acfe3459820f64397d79fb, type: 3}
-        - {fileID: 7970691734150742407, guid: ee847b28856b59f46b7e7464ed20a5a3, type: 3}
-        - {fileID: 7970691734150742407, guid: 64eaa8f4b30a0a84b8d67f06cfb0368f, type: 3}
+        - {fileID: 0}
+        - {fileID: 0}
+        - {fileID: 0}
   eyesTypeSprites:
     _serializedList:
     - Key: 0
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -4872904749825762435, guid: 5f9826d927eb7d74faccbc1906e07781, type: 3}
+        flawed:
+        - {fileID: -4270061399360487034, guid: b8ab50502cddcdf4b9cc3d0ad2443706, type: 3}
+        - {fileID: -6344160805719716478, guid: 43a2d3fd7ab79c24595ad2c4318a0dfd, type: 3}
+        - {fileID: -7450242419327484826, guid: 75e634485a459f8448f0bfa04b1fd65c, type: 3}
     - Key: 1
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -4270061399360487034, guid: b8ab50502cddcdf4b9cc3d0ad2443706, type: 3}
+        flawed:
+        - {fileID: -6344160805719716478, guid: 43a2d3fd7ab79c24595ad2c4318a0dfd, type: 3}
+        - {fileID: -7450242419327484826, guid: 75e634485a459f8448f0bfa04b1fd65c, type: 3}
+        - {fileID: -6595833488013102596, guid: ec88a584d563e1b4e93d654eb5806172, type: 3}
     - Key: 2
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -6344160805719716478, guid: 43a2d3fd7ab79c24595ad2c4318a0dfd, type: 3}
+        flawed:
+        - {fileID: -7450242419327484826, guid: 75e634485a459f8448f0bfa04b1fd65c, type: 3}
+        - {fileID: -6595833488013102596, guid: ec88a584d563e1b4e93d654eb5806172, type: 3}
+        - {fileID: -4872904749825762435, guid: 5f9826d927eb7d74faccbc1906e07781, type: 3}
     - Key: 3
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -7450242419327484826, guid: 75e634485a459f8448f0bfa04b1fd65c, type: 3}
+        flawed:
+        - {fileID: -6595833488013102596, guid: ec88a584d563e1b4e93d654eb5806172, type: 3}
+        - {fileID: -4872904749825762435, guid: 5f9826d927eb7d74faccbc1906e07781, type: 3}
+        - {fileID: -4270061399360487034, guid: b8ab50502cddcdf4b9cc3d0ad2443706, type: 3}
     - Key: 4
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -6595833488013102596, guid: ec88a584d563e1b4e93d654eb5806172, type: 3}
+        flawed:
+        - {fileID: -4872904749825762435, guid: 5f9826d927eb7d74faccbc1906e07781, type: 3}
+        - {fileID: -4270061399360487034, guid: b8ab50502cddcdf4b9cc3d0ad2443706, type: 3}
+        - {fileID: -4270061399360487034, guid: b8ab50502cddcdf4b9cc3d0ad2443706, type: 3}
   noseTypeSprites:
     _serializedList:
     - Key: 0
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -146333060460977696, guid: eb1391a80e3cb9d44adad0e5eb92e2a8, type: 3}
+        flawed:
+        - {fileID: 4790527360439372667, guid: fa728d69ba39a3c42acbce4b038a6f1f, type: 3}
+        - {fileID: -4571610643556044775, guid: 9ee8dfe96613d6a48ac75a505457c17a, type: 3}
+        - {fileID: 6865906773944819562, guid: 236b39ed966704c4ca2a7ee25392e446, type: 3}
     - Key: 1
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: 4790527360439372667, guid: fa728d69ba39a3c42acbce4b038a6f1f, type: 3}
+        flawed:
+        - {fileID: -4571610643556044775, guid: 9ee8dfe96613d6a48ac75a505457c17a, type: 3}
+        - {fileID: 6865906773944819562, guid: 236b39ed966704c4ca2a7ee25392e446, type: 3}
+        - {fileID: -6427482170195060705, guid: 81615d0a8b1994943b8d89b89c9fc18e, type: 3}
     - Key: 2
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -4571610643556044775, guid: 9ee8dfe96613d6a48ac75a505457c17a, type: 3}
+        flawed:
+        - {fileID: 6865906773944819562, guid: 236b39ed966704c4ca2a7ee25392e446, type: 3}
+        - {fileID: -6427482170195060705, guid: 81615d0a8b1994943b8d89b89c9fc18e, type: 3}
+        - {fileID: -146333060460977696, guid: eb1391a80e3cb9d44adad0e5eb92e2a8, type: 3}
     - Key: 3
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: 6865906773944819562, guid: 236b39ed966704c4ca2a7ee25392e446, type: 3}
+        flawed:
+        - {fileID: -6427482170195060705, guid: 81615d0a8b1994943b8d89b89c9fc18e, type: 3}
+        - {fileID: -146333060460977696, guid: eb1391a80e3cb9d44adad0e5eb92e2a8, type: 3}
+        - {fileID: 4790527360439372667, guid: fa728d69ba39a3c42acbce4b038a6f1f, type: 3}
     - Key: 4
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -6427482170195060705, guid: 81615d0a8b1994943b8d89b89c9fc18e, type: 3}
+        flawed:
+        - {fileID: -146333060460977696, guid: eb1391a80e3cb9d44adad0e5eb92e2a8, type: 3}
+        - {fileID: 4790527360439372667, guid: fa728d69ba39a3c42acbce4b038a6f1f, type: 3}
+        - {fileID: -4571610643556044775, guid: 9ee8dfe96613d6a48ac75a505457c17a, type: 3}
   mouthTypeSprites:
     _serializedList:
     - Key: 0
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -7488257534402956471, guid: 02aeef3ef857b914e95b8987be5e222e, type: 3}
+        flawed:
+        - {fileID: 7972017953831449372, guid: 0e58b2e476522104fa8c486a07d454a5, type: 3}
+        - {fileID: -8313500430861248689, guid: 1cb93bcfec0583f4d8106c83cdbd443a, type: 3}
+        - {fileID: -3002146880831634111, guid: 9720b3b49dcb15f4aaad3e26f719d0cf, type: 3}
     - Key: 1
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: 7972017953831449372, guid: 0e58b2e476522104fa8c486a07d454a5, type: 3}
+        flawed:
+        - {fileID: -8313500430861248689, guid: 1cb93bcfec0583f4d8106c83cdbd443a, type: 3}
+        - {fileID: -3002146880831634111, guid: 9720b3b49dcb15f4aaad3e26f719d0cf, type: 3}
+        - {fileID: -5997478855101494597, guid: e0c8da1191f35a2408769070409bc0a0, type: 3}
     - Key: 2
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -8313500430861248689, guid: 1cb93bcfec0583f4d8106c83cdbd443a, type: 3}
+        flawed:
+        - {fileID: -3002146880831634111, guid: 9720b3b49dcb15f4aaad3e26f719d0cf, type: 3}
+        - {fileID: -5997478855101494597, guid: e0c8da1191f35a2408769070409bc0a0, type: 3}
+        - {fileID: -7488257534402956471, guid: 02aeef3ef857b914e95b8987be5e222e, type: 3}
     - Key: 3
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -3002146880831634111, guid: 9720b3b49dcb15f4aaad3e26f719d0cf, type: 3}
+        flawed:
+        - {fileID: -5997478855101494597, guid: e0c8da1191f35a2408769070409bc0a0, type: 3}
+        - {fileID: -7488257534402956471, guid: 02aeef3ef857b914e95b8987be5e222e, type: 3}
+        - {fileID: 7972017953831449372, guid: 0e58b2e476522104fa8c486a07d454a5, type: 3}
     - Key: 4
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -5997478855101494597, guid: e0c8da1191f35a2408769070409bc0a0, type: 3}
+        flawed:
+        - {fileID: -7488257534402956471, guid: 02aeef3ef857b914e95b8987be5e222e, type: 3}
+        - {fileID: 7972017953831449372, guid: 0e58b2e476522104fa8c486a07d454a5, type: 3}
+        - {fileID: -8313500430861248689, guid: 1cb93bcfec0583f4d8106c83cdbd443a, type: 3}
   skinTypeSprites:
     _serializedList:
     - Key: 0
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: 5744563787780099260, guid: 5f01f3fce5095104688e992834267b66, type: 3}
+        flawed:
+        - {fileID: -4934261235433634734, guid: 4ab77c5ecfb95a74cb0c6785f4364949, type: 3}
+        - {fileID: 7414926901492091246, guid: e8824693c0d3f5a49ba40fe88c3344d4, type: 3}
+        - {fileID: -8544111564508125, guid: 1cb88ab93ad1e0547b44f0e56b542496, type: 3}
     - Key: 1
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -4934261235433634734, guid: 4ab77c5ecfb95a74cb0c6785f4364949, type: 3}
+        flawed:
+        - {fileID: 7414926901492091246, guid: e8824693c0d3f5a49ba40fe88c3344d4, type: 3}
+        - {fileID: -8544111564508125, guid: 1cb88ab93ad1e0547b44f0e56b542496, type: 3}
+        - {fileID: -1114492586451511149, guid: 93e8182a3d743e4409d3b34fe1b6869e, type: 3}
     - Key: 2
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: 7414926901492091246, guid: e8824693c0d3f5a49ba40fe88c3344d4, type: 3}
+        flawed:
+        - {fileID: -8544111564508125, guid: 1cb88ab93ad1e0547b44f0e56b542496, type: 3}
+        - {fileID: -1114492586451511149, guid: 93e8182a3d743e4409d3b34fe1b6869e, type: 3}
+        - {fileID: 5744563787780099260, guid: 5f01f3fce5095104688e992834267b66, type: 3}
     - Key: 3
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -8544111564508125, guid: 1cb88ab93ad1e0547b44f0e56b542496, type: 3}
+        flawed:
+        - {fileID: -1114492586451511149, guid: 93e8182a3d743e4409d3b34fe1b6869e, type: 3}
+        - {fileID: 5744563787780099260, guid: 5f01f3fce5095104688e992834267b66, type: 3}
+        - {fileID: -4934261235433634734, guid: 4ab77c5ecfb95a74cb0c6785f4364949, type: 3}
     - Key: 4
       Value:
-        normal: {fileID: 0}
-        flawed: []
+        normal: {fileID: -1114492586451511149, guid: 93e8182a3d743e4409d3b34fe1b6869e, type: 3}
+        flawed:
+        - {fileID: 5744563787780099260, guid: 5f01f3fce5095104688e992834267b66, type: 3}
+        - {fileID: -4934261235433634734, guid: 4ab77c5ecfb95a74cb0c6785f4364949, type: 3}
+        - {fileID: 7414926901492091246, guid: e8824693c0d3f5a49ba40fe88c3344d4, type: 3}

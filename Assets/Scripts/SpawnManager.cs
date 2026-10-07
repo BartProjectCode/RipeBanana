@@ -7,6 +7,8 @@ using Random = UnityEngine.Random;
 public class SpawnManager : MonoBehaviour
 {
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform idSpawnPoint;
+
     [Range(0f, 100f)] public float flawedNpcChance = 0f;
 
     public List<NpcInfo> npcProfiles;
@@ -17,9 +19,12 @@ public class SpawnManager : MonoBehaviour
     private NpcProfile npcProfileScript;
 
     private GameObject currentNpcInMemory;
+    public GameObject currentNpcIdInMemory;
+    private HellOrHeavenManager hellOrHeavenManagerScript;
 
-    void Start()
+    private void Start()
     {
+        hellOrHeavenManagerScript = GetComponent<HellOrHeavenManager>();
     }
 
     void Update()
@@ -49,8 +54,9 @@ public class SpawnManager : MonoBehaviour
         if (currentNpcInMemory != null)
         {
             Destroy(currentNpcInMemory);
+            Destroy(currentNpcIdInMemory);
         }
-        
+
         npcProfiles[0] = GenerateRandomNpc();
         npcProfiles[1] = npcProfiles[0];
         float flawedRoll = Random.Range(0f, 100f);
@@ -85,10 +91,13 @@ public class SpawnManager : MonoBehaviour
 
             GameObject currentNpc = Instantiate(npcPrefab, transform.position, transform.rotation);
             npcProfileScript = currentNpc.GetComponent<NpcProfile>();
+            npcProfileScript.pcScreenPosition = idSpawnPoint;
             npcProfileScript.thisNpcProfile = npcProfiles[1];
-            npcProfileScript.RightToHeaven = false;
+            npcProfileScript.rightToHeaven = false;
             currentNpcInMemory = currentNpc;
             npcProfileScript.SetNpcVisuals();
+            currentNpcIdInMemory = npcProfileScript.currentNpcIDProfile;
+
             // SpawnNpc(1, false);
         }
         else
@@ -96,12 +105,14 @@ public class SpawnManager : MonoBehaviour
             Debug.Log("NPC is GOOD");
             GameObject currentNpc = Instantiate(npcPrefab, transform.position, transform.rotation);
             npcProfileScript = currentNpc.GetComponent<NpcProfile>();
+            npcProfileScript.pcScreenPosition = idSpawnPoint;
             npcProfileScript.thisNpcProfile = npcProfiles[0];
-            npcProfileScript.RightToHeaven = true;
+            npcProfileScript.rightToHeaven = true;
             currentNpcInMemory = currentNpc;
             npcProfileScript.SetNpcVisuals();
+            currentNpcIdInMemory = npcProfileScript.currentNpcIDProfile;
+
             // SpawnNpc(0, true);
-            
         }
     }
 
@@ -110,7 +121,7 @@ public class SpawnManager : MonoBehaviour
         GameObject currentNpc = Instantiate(npcPrefab, transform.position, transform.rotation);
         npcProfileScript = currentNpc.GetComponent<NpcProfile>();
         npcProfileScript.thisNpcProfile = npcProfiles[1];
-        npcProfileScript.RightToHeaven = rightToHeavenMethodBool;
+        npcProfileScript.rightToHeaven = rightToHeavenMethodBool;
         currentNpcInMemory = currentNpc;
         npcProfileScript.SetNpcVisuals();
     }
@@ -170,8 +181,8 @@ public struct NpcInfo
 [Serializable]
 public struct FeatureVariants
 {
-    public GameObject normal;
-    public GameObject[] flawed;   // set size to 3 in the Inspector
+    public Sprite normal;
+    public Sprite[] flawed;
 }
 
 
