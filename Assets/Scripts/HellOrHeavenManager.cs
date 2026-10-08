@@ -63,7 +63,7 @@ public class HellOrHeavenManager : MonoBehaviour
         Destroy(spawnManagerScript.currentNpcIdInMemory);
         spawnManagerScript.BringNewNpc();
         
-        globalTimerManagerScript.npcTimer = globalTimerManagerScript.maxNpcTimerInMinutes * 60f;
+        globalTimerManagerScript.npcTimer = globalTimerManagerScript.maxNpcTimerInSeconds;
     }
 
     public void SendToParadise()
@@ -90,7 +90,7 @@ public class HellOrHeavenManager : MonoBehaviour
         Destroy(spawnManagerScript.currentNpcIdInMemory);
         spawnManagerScript.BringNewNpc();
         
-        globalTimerManagerScript.npcTimer = globalTimerManagerScript.maxNpcTimerInMinutes * 60f;
+        globalTimerManagerScript.npcTimer = globalTimerManagerScript.maxNpcTimerInSeconds;
         
     }
 

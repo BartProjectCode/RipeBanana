@@ -8,7 +8,7 @@ public class NpcIDProfile : MonoBehaviour
     public void SetIDVisuals()
     {
         NpcInfo info = npcProfileScript.npcIDCard;
-        Debug.Log("ID card eyes = " + info.eyes + ", skin = " + info.skin);
+        // Debug.Log("ID card eyes = " + info.eyes + ", skin = " + info.skin);
         
         // GameObject hairPrefab = hairTypeSprites[thisNpcProfile.hair];
         // Instantiate(hairPrefab, transform);

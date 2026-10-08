@@ -11,7 +11,25 @@ public class GlobalTimerManager : MonoBehaviour
 
     [Header("NPC Timer variables")] public float npcTimer = 0f;
     public float maxNpcTimerInMinutes = 1f;
-    private float maxNpcTimerInSeconds;
+    public float maxNpcTimerInSeconds;
+    public GamePhases currentGamePhase;
+    public ComboQualities currentComboQuality;
+    public int badComboValue, mediumComboValue, goodComboValue;
+
+    [Header("Phase One NPC max timers in seconds")]
+    public float badComboMaxTimerPhaseOne;
+    public float mediumComboMaxTimerPhaseOne;
+    public float goodComboMaxTimerPhaseOne;
+
+    [Header("Phase Two NPC max timers in seconds")]
+    public float badComboMaxTimerPhaseTwo;
+    public float mediumComboMaxTimerPhaseTwo;
+    public float goodComboMaxTimerPhaseTwo;
+
+    [Header("Phase Three NPC max timers in seconds")]
+    public float badComboMaxTimerPhaseThree;
+    public float mediumComboMaxTimerPhaseThree;
+    public float goodComboMaxTimerPhaseThree;
 
     [Header("Buttons variables")] public Button startButton;
     public GameObject shiftInteractiblesLayer;
@@ -21,10 +39,10 @@ public class GlobalTimerManager : MonoBehaviour
     private SpawnManager spawnManagerScript;
     private HellOrHeavenManager hellOrHeavenManagerScript;
 
-    public bool showEndScreen;
+    public TextMeshProUGUI npcCurrentTimerText;
 
+    [Header("End Screen Variables")] public bool showEndScreen;
     public GameObject endScreen;
-
     public TextMeshProUGUI peopleTreatedText;
     public TextMeshProUGUI correctJudgmentsText;
     public TextMeshProUGUI correctInHellText;
@@ -55,6 +73,12 @@ public class GlobalTimerManager : MonoBehaviour
         {
             ShiftCountDownEachFrame();
             NPCCountDownEachFrame();
+
+            npcCurrentTimerText.text = "Max Npc Timer : " + maxNpcTimerInSeconds + "s";
+            
+            GamePhaseUpdater();
+            ComboQualityUpdater();
+            MaxNpcTimerSecondsUpdater();
         }
     }
 
@@ -67,6 +91,7 @@ public class GlobalTimerManager : MonoBehaviour
             spawnManagerScript.BringNewNpc();
             startButton.gameObject.SetActive(false);
             shiftInteractiblesLayer.SetActive(true);
+            currentGamePhase = GamePhases.PhaseOne;
         }
     }
 
@@ -106,13 +131,118 @@ public class GlobalTimerManager : MonoBehaviour
         endScreen.SetActive(true);
 
         peopleTreatedText.text = "People treated : " + hellOrHeavenManagerScript.peopleTreated;
-        correctJudgmentsText.text = "Correct Judgments : " + (hellOrHeavenManagerScript.correctlyPlacedPeopleInHell + hellOrHeavenManagerScript.correctlyPlacedPeopleInHeaven);
+        correctJudgmentsText.text = "Correct Judgments : " + (hellOrHeavenManagerScript.correctlyPlacedPeopleInHell +
+                                                              hellOrHeavenManagerScript.correctlyPlacedPeopleInHeaven);
         correctInHellText.text = "HELL : " + hellOrHeavenManagerScript.correctlyPlacedPeopleInHell;
         correctInHeavenText.text = "HEAVEN : " + hellOrHeavenManagerScript.correctlyPlacedPeopleInHeaven;
-        wrongJudgmentsText.text = "Wrong Judgments : " + (hellOrHeavenManagerScript.missPlacedPeopleInHell + hellOrHeavenManagerScript.missPlacedPeopleInHeaven);
+        wrongJudgmentsText.text = "Wrong Judgments : " + (hellOrHeavenManagerScript.missPlacedPeopleInHell +
+                                                          hellOrHeavenManagerScript.missPlacedPeopleInHeaven);
         wrongInHellText.text = "HELL : " + hellOrHeavenManagerScript.missPlacedPeopleInHell;
         wrongInHeavenText.text = "HEAVEN : " + hellOrHeavenManagerScript.missPlacedPeopleInHeaven;
         peopleTimedOutText.text = "People timed out : " + hellOrHeavenManagerScript.expiredPeople;
         totalPerformancePoints.text = "PERFORMANCE POINTS (PP) : " + hellOrHeavenManagerScript.scoreGlobal;
     }
+
+    public void GamePhaseUpdater()
+    {
+        if (shiftTimer > (maxShiftTimerInSeconds / 3 * 2))
+        {
+            currentGamePhase = GamePhases.PhaseOne;
+        }
+        else if (shiftTimer <= (maxShiftTimerInSeconds / 3 * 2) && shiftTimer > maxShiftTimerInSeconds / 3)
+        {
+            currentGamePhase = GamePhases.PhaseTwo;
+        }
+        else if (shiftTimer <= (maxShiftTimerInSeconds / 3))
+        {
+            currentGamePhase = GamePhases.PhaseThree;
+        }
+    }
+
+    public void ComboQualityUpdater()
+    {
+        if (hellOrHeavenManagerScript.multiplier < mediumComboValue)
+        {
+            currentComboQuality = ComboQualities.BadCombo;
+        }
+        else if (hellOrHeavenManagerScript.multiplier >= mediumComboValue &&
+                 hellOrHeavenManagerScript.multiplier < goodComboValue)
+        {
+            currentComboQuality = ComboQualities.MediumCombo;
+        }
+        else if (hellOrHeavenManagerScript.multiplier >= goodComboValue)
+        {
+            currentComboQuality = ComboQualities.GoodCombo;
+        }
+    }
+
+    public void MaxNpcTimerSecondsUpdater()
+    {
+        switch (currentComboQuality)
+        {
+            case ComboQualities.BadCombo:
+                if (currentGamePhase == GamePhases.PhaseOne)
+                {
+                    maxNpcTimerInSeconds = badComboMaxTimerPhaseOne;
+                }
+                else if (currentGamePhase == GamePhases.PhaseTwo)
+                {
+                    maxNpcTimerInSeconds = badComboMaxTimerPhaseTwo;
+                }
+                else if (currentGamePhase == GamePhases.PhaseThree)
+                {
+                    maxNpcTimerInSeconds = badComboMaxTimerPhaseThree;
+                }
+
+                break;
+
+            case ComboQualities.MediumCombo:
+                if (currentGamePhase == GamePhases.PhaseOne)
+                {
+                    maxNpcTimerInSeconds = mediumComboMaxTimerPhaseOne;
+                }
+                else if (currentGamePhase == GamePhases.PhaseTwo)
+                {
+                    maxNpcTimerInSeconds = mediumComboMaxTimerPhaseTwo;
+                }
+                else if (currentGamePhase == GamePhases.PhaseThree)
+                {
+                    maxNpcTimerInSeconds = mediumComboMaxTimerPhaseThree;
+                }
+
+                break;
+
+            case ComboQualities.GoodCombo:
+                if (currentGamePhase == GamePhases.PhaseOne)
+                {
+                    maxNpcTimerInSeconds = goodComboMaxTimerPhaseOne;
+                }
+                else if (currentGamePhase == GamePhases.PhaseTwo)
+                {
+                    maxNpcTimerInSeconds = goodComboMaxTimerPhaseTwo;
+                }
+                else if (currentGamePhase == GamePhases.PhaseThree)
+                {
+                    maxNpcTimerInSeconds = goodComboMaxTimerPhaseThree;
+                }
+
+                break;
+        }
+    }
+}
+
+public enum GamePhases
+{
+    None,
+    PhaseOne,
+    PhaseTwo,
+    PhaseThree
+}
+
+public enum ComboQualities
+{
+    None,
+    BadCombo,
+    MediumCombo,
+    GoodCombo
 }
