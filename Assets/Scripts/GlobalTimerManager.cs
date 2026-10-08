@@ -44,6 +44,8 @@ public class GlobalTimerManager : MonoBehaviour
     public TextMeshProUGUI shiftCurrentTimerText;
     public GameObject shiftNotInteractiblePCLayer;
 
+    public GameObject screenStats;
+
     [Header("End Screen Variables")] public bool showEndScreen;
     public GameObject endScreen;
     public GameObject endScreenVisual;
@@ -141,6 +143,7 @@ public class GlobalTimerManager : MonoBehaviour
         shiftInteractiblesLayer.gameObject.SetActive(false);
         endScreen.SetActive(true);
         endScreenVisual.SetActive(true);
+        screenStats.SetActive(false);
 
         peopleTreatedText.text = "People treated : " + hellOrHeavenManagerScript.peopleTreated;
         correctJudgmentsText.text = "Correct Judgments : " + (hellOrHeavenManagerScript.correctlyPlacedPeopleInHell +
