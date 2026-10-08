@@ -91,6 +91,7 @@ public class GlobalTimerManager : MonoBehaviour
             spawnManagerScript.BringNewNpc();
             startButton.gameObject.SetActive(false);
             shiftInteractiblesLayer.SetActive(true);
+            // shiftNotInteractibleLayer.SetActive(true);
             currentGamePhase = GamePhases.PhaseOne;
         }
     }

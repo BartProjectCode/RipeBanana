@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static TMPro.TextMeshProUGUI;
+
 public class HellOrHeavenManager : MonoBehaviour
 {
     public Button hellButton;
@@ -11,19 +12,20 @@ public class HellOrHeavenManager : MonoBehaviour
     public TextMeshProUGUI globalScoreText;
 
     private SpawnManager spawnManagerScript;
-    
+
     public NpcProfile currentNpcProfileScript;
 
     public GlobalTimerManager globalTimerManagerScript;
 
-    [Header("Score")]
-    public int scoreGlobal;
+    [Header("Score")] public int scoreGlobal;
+
     public int maxMultiplier;
+
     // public int comboMultiplierDivider;
     public int multiplier;
+    public TextMeshProUGUI multiplierText;
 
-    [Header("Statistiques")]
-    public int peopleTreated;
+    [Header("Statistiques")] public int peopleTreated;
     public int peopleInHell;
     public int peopleInHeaven;
     public int missPlacedPeopleInHell;
@@ -44,7 +46,7 @@ public class HellOrHeavenManager : MonoBehaviour
         peopleTreated++;
         peopleInHell++;
         // UpdateValuesDependingOnRights(missPlacedPeopleInHell, correctlyPlacedPeopleInHell);
-        
+
         if (currentNpcProfileScript.rightToHeaven)
         {
             missPlacedPeopleInHell++;
@@ -57,12 +59,13 @@ public class HellOrHeavenManager : MonoBehaviour
             {
                 multiplier++;
             }
+
             AddScore(10, multiplier);
         }
-        
+
         Destroy(spawnManagerScript.currentNpcIdInMemory);
         spawnManagerScript.BringNewNpc();
-        
+
         globalTimerManagerScript.npcTimer = globalTimerManagerScript.maxNpcTimerInSeconds;
     }
 
@@ -79,19 +82,21 @@ public class HellOrHeavenManager : MonoBehaviour
             {
                 multiplier++;
             }
+
             AddScore(10, multiplier);
+            UpdateComboUI();
         }
         else
         {
             missPlacedPeopleInHeaven++;
             multiplier = 0;
+            UpdateComboUI();
         }
-        
+
         Destroy(spawnManagerScript.currentNpcIdInMemory);
         spawnManagerScript.BringNewNpc();
-        
+
         globalTimerManagerScript.npcTimer = globalTimerManagerScript.maxNpcTimerInSeconds;
-        
     }
 
     public void UpdateValuesDependingOnRights(int intOne, int intTwo)
@@ -114,4 +119,8 @@ public class HellOrHeavenManager : MonoBehaviour
         globalScoreText.text = "PP = " + scoreGlobal;
     }
 
+    public void UpdateComboUI()
+    {
+        multiplierText.text = "COMBO : x" + multiplier;
+    }
 }

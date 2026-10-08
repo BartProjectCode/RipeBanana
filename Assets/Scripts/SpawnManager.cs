@@ -33,6 +33,8 @@ public class SpawnManager : MonoBehaviour
     public TextMeshProUGUI npcFactsUIText3;
     public TextMeshProUGUI npcDeathUIText;
 
+    public Transform npcSpawnPoint;
+
     private void Start()
     {
         hellOrHeavenManagerScript = GetComponent<HellOrHeavenManager>();
@@ -136,6 +138,7 @@ public class SpawnManager : MonoBehaviour
             npcProfiles[1] = flawed;
 
             GameObject currentNpc = Instantiate(npcPrefab, transform.position, transform.rotation);
+            currentNpc.transform.SetParent(npcSpawnPoint, false);
             npcProfileScript = currentNpc.GetComponent<NpcProfile>();
             npcProfileScript.pcScreenPosition = idSpawnPoint;
             npcProfileScript.thisNpcProfile = npcProfiles[1];
@@ -169,6 +172,8 @@ public class SpawnManager : MonoBehaviour
 
             // SpawnNpc(0, true);
         }
+        currentNpcInMemory.transform.SetParent(npcSpawnPoint, false);
+        
     }
 
     private void SpawnNpc(int npcProfilePos, bool rightToHeavenMethodBool)
