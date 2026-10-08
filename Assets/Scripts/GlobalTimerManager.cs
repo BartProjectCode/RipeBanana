@@ -40,6 +40,7 @@ public class GlobalTimerManager : MonoBehaviour
     private HellOrHeavenManager hellOrHeavenManagerScript;
 
     public TextMeshProUGUI npcCurrentTimerText;
+    public GameObject shiftNotInteractiblePCLayer;
 
     [Header("End Screen Variables")] public bool showEndScreen;
     public GameObject endScreen;
@@ -91,7 +92,7 @@ public class GlobalTimerManager : MonoBehaviour
             spawnManagerScript.BringNewNpc();
             startButton.gameObject.SetActive(false);
             shiftInteractiblesLayer.SetActive(true);
-            // shiftNotInteractibleLayer.SetActive(true);
+            shiftNotInteractiblePCLayer.SetActive(true);
             currentGamePhase = GamePhases.PhaseOne;
         }
     }
