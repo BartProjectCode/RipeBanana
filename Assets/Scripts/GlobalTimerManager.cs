@@ -59,6 +59,9 @@ public class GlobalTimerManager : MonoBehaviour
     public TextMeshProUGUI peopleTimedOutText;
     public TextMeshProUGUI totalPerformancePoints;
 
+    private InteractiblesPopOutManager popOutManagerScript;
+    
+
     void Start()
     {
         maxShiftTimerInSeconds = maxShiftTimerInMinutes * 60;
@@ -71,6 +74,7 @@ public class GlobalTimerManager : MonoBehaviour
 
         spawnManagerScript = GetComponent<SpawnManager>();
         hellOrHeavenManagerScript = GetComponent<HellOrHeavenManager>();
+        popOutManagerScript = GetComponent<InteractiblesPopOutManager>();
     }
 
     void Update()
@@ -156,6 +160,13 @@ public class GlobalTimerManager : MonoBehaviour
         wrongInHeavenText.text = "HEAVEN : " + hellOrHeavenManagerScript.missPlacedPeopleInHeaven;
         peopleTimedOutText.text = "People timed out : " + hellOrHeavenManagerScript.expiredPeople;
         totalPerformancePoints.text = "PERFORMANCE POINTS (PP) : " + hellOrHeavenManagerScript.scoreGlobal;
+        popOutManagerScript.screenStats.SetActive(false);
+        popOutManagerScript.deathSkullObject.SetActive(false);
+        popOutManagerScript.deathSkullVisual.SetActive(false);
+        popOutManagerScript.idCardObject.SetActive(false);
+        popOutManagerScript.scrollObject.SetActive(false);
+        popOutManagerScript.scrollVisual.SetActive(false);
+        
     }
 
     public void GamePhaseUpdater()
