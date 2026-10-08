@@ -13,11 +13,11 @@ public class NpcIDProfile : MonoBehaviour
         // GameObject hairPrefab = hairTypeSprites[thisNpcProfile.hair];
         // Instantiate(hairPrefab, transform);
         
-        SpawnIDCardPart(npcProfileScript.hairTypeSprites[info.hair], 14);
-        SpawnIDCardPart(npcProfileScript.eyesTypeSprites[info.eyes],13);
-        SpawnIDCardPart(npcProfileScript.noseTypeSprites[info.nose], 12);
-        SpawnIDCardPart(npcProfileScript.mouthTypeSprites[info.mouth], 11);
-        SpawnIDCardPart(npcProfileScript.skinTypeSprites[info.skin], 10);
+        SpawnIDCardPart(npcProfileScript.hairTypeSprites[info.hair], 105);
+        SpawnIDCardPart(npcProfileScript.eyesTypeSprites[info.eyes],104);
+        SpawnIDCardPart(npcProfileScript.noseTypeSprites[info.nose], 103);
+        SpawnIDCardPart(npcProfileScript.mouthTypeSprites[info.mouth], 102);
+        SpawnIDCardPart(npcProfileScript.skinTypeSprites[info.skin], 101);
         
     }
     

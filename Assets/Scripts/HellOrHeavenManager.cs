@@ -116,11 +116,11 @@ public class HellOrHeavenManager : MonoBehaviour
     public void AddScore(int scoreToAdd, int comboMultiplier)
     {
         scoreGlobal += (scoreToAdd * comboMultiplier);
-        globalScoreText.text = "PP = " + scoreGlobal;
+        globalScoreText.text = " " + scoreGlobal;
     }
 
     public void UpdateComboUI()
     {
-        multiplierText.text = "COMBO : x" + multiplier;
+        multiplierText.text = "x" + multiplier;
     }
 }

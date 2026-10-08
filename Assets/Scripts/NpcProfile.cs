@@ -57,6 +57,7 @@ public class NpcProfile : MonoBehaviour
     public void InstantiateIDCard()
     {
         currentNpcIDProfile = Instantiate(idCardObject, pcScreenPosition.transform.position, pcScreenPosition.rotation);
+        currentNpcIDProfile.transform.localPosition = new Vector3(-1.51f, -0.1f, 0);
         currentNpcIDProfile.transform.SetParent(pcScreenPosition, false);
         currentNpcIDProfile.GetComponent<NpcIDProfile>().npcProfileScript = this;
         currentNpcIDProfile.GetComponent<NpcIDProfile>().SetIDVisuals();

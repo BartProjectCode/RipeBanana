@@ -40,6 +40,7 @@ public class GlobalTimerManager : MonoBehaviour
     private HellOrHeavenManager hellOrHeavenManagerScript;
 
     public TextMeshProUGUI npcCurrentTimerText;
+    public TextMeshProUGUI shiftCurrentTimerText;
     public GameObject shiftNotInteractiblePCLayer;
 
     [Header("End Screen Variables")] public bool showEndScreen;
@@ -75,7 +76,8 @@ public class GlobalTimerManager : MonoBehaviour
             ShiftCountDownEachFrame();
             NPCCountDownEachFrame();
 
-            npcCurrentTimerText.text = "Max Npc Timer : " + maxNpcTimerInSeconds + "s";
+            npcCurrentTimerText.text = "" + Mathf.CeilToInt(npcTimer) + "s";
+            shiftCurrentTimerText.text = "" + Mathf.CeilToInt(shiftTimer) + "s";
             
             GamePhaseUpdater();
             ComboQualityUpdater();
