@@ -582,6 +582,7 @@ RectTransform:
   - {fileID: 1988693160}
   - {fileID: 382941431}
   - {fileID: 992728684}
+  - {fileID: 1782366308}
   m_Father: {fileID: 703068699}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -938,6 +939,7 @@ MonoBehaviour:
   shiftNotInteractiblePCLayer: {fileID: 700001354}
   showEndScreen: 0
   endScreen: {fileID: 233431937}
+  endScreenVisual: {fileID: 826538335}
   peopleTreatedText: {fileID: 778101012}
   correctJudgmentsText: {fileID: 511918169}
   correctInHellText: {fileID: 1010799625}
@@ -1110,6 +1112,7 @@ MonoBehaviour:
   scrollVisual: {fileID: 1964480269}
   deathSkullObject: {fileID: 649572178}
   deathSkullVisual: {fileID: 1008191837}
+  screenStats: {fileID: 700001354}
   uiCurrentlyLookedAt: 0
 --- !u!1 &353354751
 GameObject:
@@ -1716,10 +1719,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Restart
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 17d5667486e352540bee2d6bb23159bd, type: 2}
+  m_sharedMaterial: {fileID: 5805844059041711480, guid: 17d5667486e352540bee2d6bb23159bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1743,8 +1746,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2535,7 +2538,6 @@ RectTransform:
   - {fileID: 835139681}
   - {fileID: 1390712894}
   - {fileID: 233431938}
-  - {fileID: 1782366308}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -5523,7 +5525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1782366308
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5531,18 +5533,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1782366307}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 463328399}
-  m_Father: {fileID: 703068699}
+  m_Father: {fileID: 233431938}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -209}
+  m_SizeDelta: {x: 241.5, y: 109}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1782366309
 MonoBehaviour:
@@ -5587,7 +5589,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1782366310}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 341729187}
+        m_TargetAssemblyTypeName: GlobalTimerManager, Assembly-CSharp
+        m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1782366310
 MonoBehaviour:
   m_ObjectHideFlags: 0

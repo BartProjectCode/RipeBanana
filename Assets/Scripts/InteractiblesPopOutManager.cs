@@ -12,12 +12,15 @@ public class InteractiblesPopOutManager : MonoBehaviour
     public GameObject deathSkullObject;
     public GameObject deathSkullVisual;
 
+    public GameObject screenStats;
+
     public UITypes uiCurrentlyLookedAt;
 
     public void ShowIDCard()
     {
         interactiblesLayer.SetActive(false);
         idCardObject.SetActive(true);
+        HideStats();
         uiCurrentlyLookedAt = UITypes.IDCard;
     }
 
@@ -26,6 +29,7 @@ public class InteractiblesPopOutManager : MonoBehaviour
         interactiblesLayer.SetActive(false);
         scrollObject.SetActive(true);
         scrollVisual.SetActive(true);
+        HideStats();
         uiCurrentlyLookedAt = UITypes.Scroll;
     }
 
@@ -34,7 +38,17 @@ public class InteractiblesPopOutManager : MonoBehaviour
         interactiblesLayer.SetActive(false);
         deathSkullObject.SetActive(true);
         deathSkullVisual.SetActive(true);
+        HideStats();
         uiCurrentlyLookedAt = UITypes.DeathSkull;
+    }
+
+    public void ShowStats()
+    {
+        screenStats.SetActive(true);
+    }
+    public void HideStats()
+    {
+        screenStats.SetActive(false);
     }
 
     private void Update()
@@ -54,6 +68,7 @@ public class InteractiblesPopOutManager : MonoBehaviour
             scrollVisual.SetActive(false);
             deathSkullObject.SetActive(false);
             deathSkullVisual.SetActive(false);
+            ShowStats();
             uiCurrentlyLookedAt = UITypes.None;
         }
     }

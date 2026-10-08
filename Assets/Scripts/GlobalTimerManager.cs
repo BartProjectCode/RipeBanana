@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using static TMPro.TextMeshProUGUI;
 
@@ -45,6 +46,7 @@ public class GlobalTimerManager : MonoBehaviour
 
     [Header("End Screen Variables")] public bool showEndScreen;
     public GameObject endScreen;
+    public GameObject endScreenVisual;
     public TextMeshProUGUI peopleTreatedText;
     public TextMeshProUGUI correctJudgmentsText;
     public TextMeshProUGUI correctInHellText;
@@ -82,6 +84,11 @@ public class GlobalTimerManager : MonoBehaviour
             GamePhaseUpdater();
             ComboQualityUpdater();
             MaxNpcTimerSecondsUpdater();
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                RestartGame();
+            }
         }
     }
 
@@ -133,6 +140,7 @@ public class GlobalTimerManager : MonoBehaviour
     {
         shiftInteractiblesLayer.gameObject.SetActive(false);
         endScreen.SetActive(true);
+        endScreenVisual.SetActive(true);
 
         peopleTreatedText.text = "People treated : " + hellOrHeavenManagerScript.peopleTreated;
         correctJudgmentsText.text = "Correct Judgments : " + (hellOrHeavenManagerScript.correctlyPlacedPeopleInHell +
@@ -232,6 +240,11 @@ public class GlobalTimerManager : MonoBehaviour
 
                 break;
         }
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("PrototypeDEV");
     }
 }
 
